@@ -1,157 +1,194 @@
-# Lab 2
+# Lab 3
 
-2.1 READ ME
-# Working with the cout Statement
+3.1 READ ME
 
-In the previous week's lab we saw how the `cout` statement can be used to display text output. To get started, copy your code from Lab 1.1 into the editor panel.  
+# cin Statements and Formatting
+## Exercise 1
 
-# Exercise 1
+Complete the program so that a sample run inputting `22` for the number of items bought and `10.98` for the price of each item will produce the results below.
 
-Fill in code so that the program will do the following:
+Sample run of the program:
 
-
-- Write your first and last name on one line.
-- Write your sign of the zodiac on the next line.
-- Write your favorite color on the next line. 
-- Write your favorite animal on the next line. 
-
-Remember that to output a string literal, such as `"Hello"`, you must use quotes. 
+`Please input the number of items bought`
+**22**
+`Please input the price of each item`
+**10.98**
+`The total bill is $241.5600`
 
 
-Run the program. 
+## Exercise 2
+
+Once you have the program working, change the statement:
+
+`cout << setprecision (4) << fixed;`
+
+to
+
+`cout << setprecision(4);`
+
+Rerun the program with the same data given in Exercise 1. 
+
+How does the use of the `fixed`  manipulator change how the `setprecision` function formats the decimal number? Make a note in your notes about how `fixed` and `setprecision` work.
+
+## Exercise 3
+
+Now configure the program so that decimal numbers are formatted for two places to the right of the decimal point when outputted. You may need to put the `fixed` manipulator back and adjust the `setprecision` function.
+
+PROGRAM 
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+	int	quantity;		// contains the amount of items purchased 
+	double itemPrice;	// contains the price of each item
+	double totalBill;	// contains the total bill.
+
+  cout << endl;
+	cout << setprecision(2) << fixed;	
+  // formatted output 
+	
+	cout << "Please input the number of items bought\n";
+	cin >> quantity;
+
+	cout << "Please enter the price for each item\n";
+  // Fill in the prompt to ask for the price.
+
+  cin >> itemPrice;
+	// Fill in the input statement to bring in the price of each item.
+
+  totalBill = itemPrice * quantity;
+	// Fill in the assignment statement to determine the total bill.
+
+  cout << "The total bill is $" << totalBill << ".\n";
+	// Fill in the output statement to print total bill,
+	// with a label to the screen.
+
+  //Fixed + Set Precision vs Set Precision
+
+  //Fixed + Set Prec. sets my decimal answers to the number that set prec has, in this example it gives my answers with 4 digits after the decimal place
+  
+  //ONLY set prec cuts off the decimal answer at the next non zero number. 
 
 
-Example Output: 
+}
 
-**Hector Smith
-Taurus
-Blue
-Rabbits**
+3.2 READ ME
+# Furniture Company
 
+The Supremo Furniture Company sells the following three styles of chairs: 
 
-# Exercise 2
+Style             |Price Per Chair 
+------------------|---------------
+American Colonial | $85.00 
+Modern            | $57.50 
+French Classical  | $127.75 
 
-Change the program so that a blank line separates your zodiac sign from your favorite color.
+Write a program that will input the amount of chairs sold for each style. It will print the total dollar sales of each style as well as the total sales of all chairs in fixed point notation with two decimal places. 
 
-**Hector Smith
-Taurus**
+Sample run: 
 
-**Blue
-Rabbits**
+`Please input the number of American Colonial chairs sold `
+**20** 
+`Please input the number of Modern chairs sold `
+**15**
+`Please input the number of French Classical chairs sold `
+**5** 
 
-# Exercise 3
-
-Change the program so that the following (but with your name and info) is printed, including asterisks. Try to get the spacing for the right column to align similar to the the example. 
-
-**\*\*\*\*\*\*\*\*\*\*\*\*
-Programmer: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hector Smith
-Zodiac Sign: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Taurus**
-
-**Favorite Color: &nbsp;&nbsp;&nbsp;Blue
-Favorite Animal: Rabbit
-\*\*\*\*\*\*\*\*\*\*\***
-
-Run the program and verify it's correct. Submit the code when you are finished with Exercise 3. You do NOT have to submit code individually for Exercise 1 and 2.
+`The total sales of American Colonial chairs $1700.00 `
+`The total sales of Modern chairs $862.50 `
+`The total sales of French Classical chairs $638.75 `
+`The total sales of all chairs $3201.25 `
 
 PROGRAM
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 int main() {
 
+double americanColonial;
+int soldAmerican = 0;
+double modern;
+int soldModern = 0;
+double frenchClassical;
+int soldFrench = 0;
+
+cout << setprecision(2) << fixed;	
+
 cout << endl;
-  cout << "************\n";
-  cout << "Programmer: Juan Rojas\n";
-  cout << "Zodiac Sign: Leo\n";
-  cout << endl;
-  cout << "Favorite Color: Burgandy?\n";
-  cout << "Favorite Animal: Hedgehog\n";
-  cout << "************\n";
+cout << "Please enter the amount of American Colonial chairs sold. \n";
+cin >> soldAmerican;
+cout << endl;
+cout << "Please enter the amount of Modern chairs sold\n";
+cin >> soldModern;
+cout << endl;
+cout << "Please enter the amount of French Classical chairs sold\n";
+cin >> soldFrench;
+
+americanColonial = 85;
+modern = 57.50;
+frenchClassical = 127.75;
+
+double totalAmerican = americanColonial * soldAmerican;
+double totalModern = modern * soldModern;
+double totalFrench = frenchClassical * soldFrench; 
+
+cout << "The total sales of American Colonial chairs is $" << totalAmerican << ".\n";
+cout <<"The total sales of Modern chairs is $" << totalModern << ".\n";
+cout << "The total sales of French Classical chairs is $" << totalFrench << ".\n";
 
 }
 
-2.2 READ ME
-# Working with Variables and Arithmetic Operators
+3.3 READ ME
+# Sales and Taxes
 
-Fill in the statements in the main.cpp file so that the output will produce the following:  
- 
-***The circumference of the circle is 33.9292
-The area of the circle is 91.6088
-The diameter of the circle is 10.8***
+Write a program that will input total sales that a business generates for a particular month. The program will also input the state and local sales tax percentage. It will output the total sales plus the state tax and local tax to be paid. The output should be in fixed notation with 2 decimal places. 
 
-Wherever there is a message in the comments saying `"Fill in code ..."` you should add C++ statements as directed.
+Sample run: 
 
-To square a number you can multiply it by itself.
+`Please input the total sales for the month `
+**1080** 
+`Please input the state tax percentage in decimal form (.02 for 2%) `
+**.06** 
+`Please input the local tax percentage in decimal form (.02 for 2%) `
+**.02** 
 
-num squared = num x num
+`The total sales for the month is $1080.00 `
+`The state tax for the month is $64.80 `
+`The local tax for the month is $21.60 `
 
 PROGRAM
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
-int main()
-{
-  cout << endl;
-  double pi = 3.14159;
-  double radius = 5.4;
-  double circumference = 2*pi*radius; 
-  // definition of circumference
+int main() {
 
-  double area = 2*pi*radius;
-  // Fill in code to define an area variable
+double totalSalesTax;
+double stateTax;
+double localTax;
 
-  double diameter = circumference/pi;
-  // Fill in code to define a diameter variable
+cout << setprecision(2) << fixed;	
+cout << endl;
 
-  circumference = 2 * pi * radius; // computes circumference
 
-  area = pi*radius*radius;
-  // Fill in code to compute the area of a circle
+cout << "Please input the total sales tax for each month.\n";
+cin >> totalSalesTax;
 
-  diameter =circumference/pi;
-  // Fill in code to compute the diameter of a circle
+cout << "Please input the state tax percentage in decimal form.\n";
+cin >> stateTax;
+cout << "Please input the local tax percentage in decimal form.\n";
+cin >> localTax;
 
-  cout << "The circumference of the circle is " << circumference << endl;
-  
-  cout << "The area of the circle is " << area << endl;
-  // Fill in code for a cout statement to output the area
-  
-  cout << "The diameter of the circle is " << diameter << endl;
-  // Fill in code for a cout statement to output the diameter
+cout << "The total sales tax for the month is $" << totalSalesTax << endl;
+
+
+cout << "The state tax for the month is $" << stateTax * totalSalesTax << endl;
+cout << "The local tax for the month is $" << localTax * totalSalesTax << endl;
+
 
 }
-
-2.3 READ ME
-# Rectangle Area and Perimeter
-
-Using Lab 2.2 as an example, develop a program that will determine the area and perimeter of a rectangle. The length and width should be given as variables (length = 8, width = 3)
-
-To get started, copy your code from Lab 2.2 into the editor panel. Now modify it to find the area and perimeter of a rectangle with a length and width of 8 and 3.
-
-Continue to work on it until you get the following output: 
-
-***The area of the rectangle is 24
-The perimeter of the rectangle is 22***
 
 PROGRAM
-#include <iostream>
-using namespace std;
-
-int main()
-{
-float length;
-float width;
-float area;
-float perimeter;
-
-width = 3;
-length = 8;
-
-area = length * width;
-perimeter = 2 * (length + width);
-
-cout << "The area of the rectangle is " << area << ".\n";
-cout << "The perimeter of the rectangle is " << perimeter << ".\n";
-
-}
-
