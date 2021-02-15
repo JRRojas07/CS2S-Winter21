@@ -1,4 +1,4 @@
-# LAB 2
+# Lab 2
 
 2.1 READ ME
 # Working with the cout Statement
