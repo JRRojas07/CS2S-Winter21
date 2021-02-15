@@ -1,2 +1,2 @@
-# CS2S-Winter21
+# CS2-Winter21
 C++ projects from Repl.it
